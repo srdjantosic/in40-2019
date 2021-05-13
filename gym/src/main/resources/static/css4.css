@@ -1,0 +1,22 @@
+body{
+    background:url(unnamed.jpg);
+    background-size: repeat;
+    
+     
+ }
+
+ .box{
+
+    margin: 50px auto;
+    width: 500px;
+    height: 500px;
+    font-size: 20px;
+    top: 50px;
+   
+    text-align: left;
+    border-radius: 10px;
+    
+   background-color:  rgb(236, 255, 127);
+    padding: 20px;
+    
+   }

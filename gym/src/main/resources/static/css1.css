@@ -1,0 +1,27 @@
+body{
+   background:url(unnamed.jpg);
+   background-size: repeat;
+   
+    
+}
+.box{
+
+ margin: 50px auto;
+ width: 500px;
+ height: 400px;
+ font-size: 20px;
+ top: 50px;
+ left: 50px;
+ text-align: center;
+ border-radius: 10px;
+background-color:  rgb(236, 255, 127);
+}
+.ph1{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 3cm;
+    text-align:center;
+    text-decoration: underline;
+    color: black;
+  
+
+}
