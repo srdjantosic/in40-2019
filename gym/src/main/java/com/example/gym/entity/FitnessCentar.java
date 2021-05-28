@@ -22,7 +22,7 @@ public class FitnessCentar{
 	private Set<Sala> sale;
 	
 	@OneToMany(mappedBy = "fitnesscentar", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<Trener> treneri1;
+	private Set<Trener> treneri;
 	
 	@OneToMany(mappedBy = "fitnesscentar", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Clan> clanovi;
@@ -32,6 +32,16 @@ public class FitnessCentar{
 	public FitnessCentar() {
 	}
 	
+
+	public FitnessCentar(Long id, String naziv, String adresa, String broj_tel_centrale, String email) {
+		super();
+		this.id = id;
+		this.naziv = naziv;
+		this.adresa = adresa;
+		this.broj_tel_centrale = broj_tel_centrale;
+		this.email = email;
+	}
+
 
 	public void setId(Long id) {
 		this.id = id;
@@ -77,6 +87,11 @@ public class FitnessCentar{
 	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+
+	public Long getId() {
+		return id;
 	}
 	
 		

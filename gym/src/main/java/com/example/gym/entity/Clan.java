@@ -1,13 +1,13 @@
 package com.example.gym.entity;
 
-import java.util.ArrayList;
+
 import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
 public class Clan extends Korisnik {
-	public ArrayList<Double> ocene;
+	
 	
 	@ManyToMany(mappedBy = "clan", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	public Set<Trening> odradjeni;
@@ -20,15 +20,20 @@ public class Clan extends Korisnik {
 	
 	@OneToMany(mappedBy = "clan", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Termin> termin;
+	
+	//@ManyToOne(fetch = FetchType.EAGER)
+	
+	
 	public Clan() {
 		
 	}
-	public ArrayList<Double> getOcene() {
-		return ocene;
+
+	public Clan(String korisnicko_ime, String lozinka, String ime, String prezime, String kontakt, String email,
+			String datum_rodjenja, boolean aktivan) {
+		super(korisnicko_ime, lozinka, ime, prezime, kontakt, email, datum_rodjenja, aktivan);
+		
 	}
-	public void setOcene(ArrayList<Double> ocene) {
-		this.ocene = ocene;
-	}
+	
 
 	
 

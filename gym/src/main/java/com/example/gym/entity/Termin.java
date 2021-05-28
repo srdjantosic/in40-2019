@@ -1,6 +1,7 @@
 package com.example.gym.entity;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -30,8 +31,10 @@ public class Termin {
 	    @ManyToOne(fetch = FetchType.EAGER)
 	    private Trener trener;
 
+	    @OneToMany(fetch = FetchType.EAGER)
+		private Set<Ocena> ocena;
 	   
-	public Date getDatum() {
+	    public Date getDatum() {
 			return datum;
 		}
 
@@ -41,16 +44,82 @@ public class Termin {
 		}
 
 
-	public Termin() {
+		public Termin() {
 
-	}
+		}
 
 
-	@Override
-	public String toString() {
-		return "Termin [id=" + id + ", datum=" + datum + ", fitnesscentar=" + fitnesscentar + ", sala=" + sala
-				+ ", trening=" + trening + ", clan=" + clan + ", trener=" + trener + "]";
-	}
+		public Long getId() {
+			return id;
+		}
+
+
+		public void setId(Long id) {
+			this.id = id;
+		}
+
+
+		public FitnessCentar getFitnesscentar() {
+			return fitnesscentar;
+		}
+
+
+		public void setFitnesscentar(FitnessCentar fitnesscentar) {
+			this.fitnesscentar = fitnesscentar;
+		}
+
+
+		public Sala getSala() {
+			return sala;
+		}
+
+
+		public void setSala(Sala sala) {
+			this.sala = sala;
+		}
+
+
+		public Trening getTrening() {
+			return trening;
+		}
+
+
+		public void setTrening(Trening trening) {
+			this.trening = trening;
+		}
+
+
+		public Clan getClan() {
+			return clan;
+		}
+
+
+		public void setClan(Clan clan) {
+			this.clan = clan;
+		}
+
+
+		public Trener getTrener() {
+			return trener;
+		}
+
+
+		public void setTrener(Trener trener) {
+			this.trener = trener;
+		}
+
+
+		public Set<Ocena> getOcena() {
+			return ocena;
+		}
+
+
+		public void setOcena(Set<Ocena> ocena) {
+			this.ocena = ocena;
+		}
+
+
+	
 
 	
 }
