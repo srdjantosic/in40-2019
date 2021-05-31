@@ -5,8 +5,7 @@ import javax.persistence.*;
 
 @Entity
 public class Trener extends Korisnik {
-	@Column
-	private double prosecna_ocena;
+	
 	
 	@OneToMany(mappedBy = "trener", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	public Set<Trening> treninzi;
@@ -21,13 +20,6 @@ public class Trener extends Korisnik {
 		
 	}
 
-	public double getProsecna_ocena() {
-		return prosecna_ocena;
-	}
-
-	public void setProsecna_ocena(double prosecna_ocena) {
-		this.prosecna_ocena = prosecna_ocena;
-	}
 
 	public Set<Termin> getTermin() {
 		return termin;

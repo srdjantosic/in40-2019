@@ -17,5 +17,7 @@ public interface TreningService {
 	    void delete(Long id);
 	    
 	    List<Trening> sortTreningByCena();
+
+	    List<Trening> sortTrening();
 }
 

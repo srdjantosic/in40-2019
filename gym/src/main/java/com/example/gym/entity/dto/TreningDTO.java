@@ -1,5 +1,6 @@
 package com.example.gym.entity.dto;
 
+import java.util.ArrayList;
 
 public class TreningDTO {
 	
@@ -15,6 +16,8 @@ public class TreningDTO {
 	
 	
 	private double cena;
+	
+	private ArrayList<TerminDTO> termini;
 	
 	
 
@@ -105,5 +108,18 @@ public class TreningDTO {
 		this.trajanje = trajanje;
 		this.cena = cena;
 	}
+
+
+
+	public ArrayList<TerminDTO> getTermini() {
+		return termini;
+	}
+
+
+
+	public void setTermini(ArrayList<TerminDTO> termini) {
+		this.termini = termini;
+	}
+	
 
 }

@@ -73,6 +73,15 @@ public class TreningServiceImpl implements TreningService {
 		}
 		return sorted;
 	}
+
+	@Override
+	public List<Trening> sortTrening() {
+		List<Trening> sorted = treningRepository.findTreningSort();
+		if (sorted == null) {
+			return null;
+		}
+		return sorted;
+	}
 	
 	
 	

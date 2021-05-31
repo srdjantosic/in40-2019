@@ -24,7 +24,7 @@ public class Trening {
 	@Column
 	private int trajanje;
 	
-	//@Column
+	@Column
 	private double cena;
 	
 	
