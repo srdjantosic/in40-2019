@@ -4,16 +4,18 @@
         <link rel="stylesheet" type="text/css" href="css2.css">
         <meta charset="utf-8">
         <title>Registracija korisnika </title>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/addclan.js"></script>
     </head>
     <body>
         <div class="box">
-        <form>
+        <form id="RegistracijaForm">
         <label for="imeField" ><b><i>Ime </i></b> </label>
         <input id="imeField" type="text" name="Ime" placeholder="Unesite ime" 
         size="35" maxlength="35" >
         <br/>
         <br/>
-        <label for="prezimeimeField"> <b><i>Prezime</i></b> </label>
+        <label for="prezimeField"> <b><i>Prezime</i></b> </label>
         <input id="prezimeField" type="text" name="Prezime" placeholder="Unesite prezime"
          maxlength="35" />
         <br/>
@@ -36,7 +38,7 @@
         <input id="datumField" type="date" name="date" /> 
         <br/>
         <br/>
-        <label for="kontaktField"><b><i>Password :</b></i></label>
+        <label for="kontaktField"><b><i>Kontakt :</b></i></label>
         <input id="kontaktField" type="number" name="kontakt" placeholder="Unesite broj telefona"/>
         <br/>
         <br/>

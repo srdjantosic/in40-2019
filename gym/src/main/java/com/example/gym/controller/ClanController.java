@@ -31,7 +31,7 @@ import com.example.gym.service.ClanService;
 		        Clan clan = new Clan(clanDTO.getKorisnicko_ime(), clanDTO.getLozinka(), clanDTO.getIme(),
 		                clanDTO.getPrezime(), clanDTO.getKontakt(), clanDTO.getEmail(), clanDTO.getDatum_rodjenja(), clanDTO.isAktivan());
 
-		      
+	
 		      Clan newClan = clanservice.create(clan);
 
 		        
@@ -39,7 +39,7 @@ import com.example.gym.service.ClanService;
 		        		newClan.getPrezime(),newClan.getKontakt(), newClan.getEmail(), newClan.getDatum_rodjenja(),newClan.isAktivan());
 
 		        
-		        return new ResponseEntity<>(newClanDTO, HttpStatus.CREATED);
+		        return new ResponseEntity<>(newClanDTO,HttpStatus.CREATED);
 		    }
 
 }

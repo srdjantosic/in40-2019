@@ -81,6 +81,38 @@ public class TreningServiceImpl implements TreningService {
 			return null;
 		}
 		return sorted;
+		
+		
+	}
+
+	@Override
+	public List<Trening> findNaziv(String naziv) {
+		List<Trening> trening = this.treningRepository.findByNaziv( naziv);
+        return trening;
+	}
+
+	@Override
+	public List<Trening> findOpis(String opis) {
+		List<Trening> trening = this.treningRepository.findByOpis(opis);
+        return trening;
+	}
+
+	//@Override
+	//public List<Trening> findTip_treninga(String tip_treninga) {
+		//List<Trening> trening = this.treningRepository.findByTip_treninga(tip_treninga);
+        //return trening;
+	//}
+
+	@Override
+	public List<Trening> findTrajanje(int trajanje) {
+		List<Trening> trening = this.treningRepository.findByTrajanje(trajanje);
+        return trening;
+	}
+
+	@Override
+	public List<Trening> findCena(Double cena) {
+		List<Trening> trening = this.treningRepository.findByCena(cena);
+        return trening;
 	}
 	
 	

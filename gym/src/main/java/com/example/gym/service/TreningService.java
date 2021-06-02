@@ -19,5 +19,13 @@ public interface TreningService {
 	    List<Trening> sortTreningByCena();
 
 	    List<Trening> sortTrening();
+	    
+	    List<Trening> findNaziv(String naziv);
+		List<Trening> findOpis(String opis);
+		//List<Trening> findTip_treninga(String tip_treninga);
+		List<Trening> findTrajanje(int trajanje);
+		List<Trening> findCena(Double cena);
+		
+		
 }
 

@@ -6,8 +6,6 @@ import com.example.gym.entity.dto.TreningDTO;
 import com.example.gym.service.TerminService;
 import com.example.gym.service.TreningService;
 
-import net.bytebuddy.asm.Advice.OffsetMapping.Sort;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+
 
 @RestController
 @RequestMapping(value = "/api/treninzi")
@@ -98,4 +96,92 @@ public TreningController(TreningService treningservice, TerminService terminServ
      
  }
  
+ @GetMapping(value = "/naziv/{naziv}", produces = MediaType.APPLICATION_JSON_VALUE)
+ public ResponseEntity<List<TreningDTO>> 	getTrening(@PathVariable("naziv") String naziv) {
+     // Pozivanjem metode servisa dobavljamo zaposlenog po ID-ju
+     List<Trening> treninzi = this.treningservice.findNaziv(naziv);
+
+     List<TreningDTO> treninziDTO = new ArrayList<TreningDTO>();
+     for(Trening t : treninzi) {
+    	 TreningDTO treningDTO = new TreningDTO();
+         treningDTO.setId(t.getId());
+         treningDTO.setNaziv(t.getNaziv());
+         treningDTO.setOpis(t.getOpis());
+         treningDTO.setCena(t.getCena());
+         treningDTO.setTip_treninga(t.getTip_treninga());
+         treningDTO.setTrajanje(t.getTrajanje());
+        		 treninziDTO.add(treningDTO);
+     }
+    
+
+    
+     return new ResponseEntity<>(treninziDTO, HttpStatus.OK);
+ 
+}
+ @GetMapping(value = "/opis/{opis}", produces = MediaType.APPLICATION_JSON_VALUE)
+ public ResponseEntity<List<TreningDTO>> getTreningPoOpisu(@PathVariable("opis") String opis) {
+     
+     List<Trening> treninzi = this.treningservice.findOpis(opis);
+
+     List<TreningDTO> treninziDTO = new ArrayList<TreningDTO>();
+     for(Trening t : treninzi) {
+    	 TreningDTO treningDTO = new TreningDTO();
+         treningDTO.setId(t.getId());
+         treningDTO.setNaziv(t.getNaziv());
+         treningDTO.setOpis(t.getOpis());
+         treningDTO.setCena(t.getCena());
+         treningDTO.setTip_treninga(t.getTip_treninga());
+         treningDTO.setTrajanje(t.getTrajanje());
+        		 treninziDTO.add(treningDTO);
+     }
+    
+
+    
+     return new ResponseEntity<>(treninziDTO, HttpStatus.OK);
+ 
+}
+ @GetMapping(value = "/cena/{cena}", produces = MediaType.APPLICATION_JSON_VALUE)
+ public ResponseEntity<List<TreningDTO>> getTreningPoCeni(@PathVariable("cena") Double cena) {
+     
+     List<Trening> treninzi = this.treningservice.findCena(cena);
+
+     List<TreningDTO> treninziDTO = new ArrayList<TreningDTO>();
+     for(Trening t : treninzi) {
+    	 TreningDTO treningDTO = new TreningDTO();
+         treningDTO.setId(t.getId());
+         treningDTO.setNaziv(t.getNaziv());
+         treningDTO.setOpis(t.getOpis());
+         treningDTO.setCena(t.getCena());
+         treningDTO.setTip_treninga(t.getTip_treninga());
+         treningDTO.setTrajanje(t.getTrajanje());
+        		 treninziDTO.add(treningDTO);
+     }
+    
+
+    
+     return new ResponseEntity<>(treninziDTO, HttpStatus.OK);
+ 
+}
+ @GetMapping(value = "/trajanje/{trajanje}", produces = MediaType.APPLICATION_JSON_VALUE)
+ public ResponseEntity<List<TreningDTO>> getTreningPoTrajanju(@PathVariable("trajanje") int trajanje) {
+     
+     List<Trening> treninzi = this.treningservice.findTrajanje(trajanje);
+
+     List<TreningDTO> treninziDTO = new ArrayList<TreningDTO>();
+     for(Trening t : treninzi) {
+    	 TreningDTO treningDTO = new TreningDTO();
+         treningDTO.setId(t.getId());
+         treningDTO.setNaziv(t.getNaziv());
+         treningDTO.setOpis(t.getOpis());
+         treningDTO.setCena(t.getCena());
+         treningDTO.setTip_treninga(t.getTip_treninga());
+         treningDTO.setTrajanje(t.getTrajanje());
+        		 treninziDTO.add(treningDTO);
+     }
+    
+
+    
+     return new ResponseEntity<>(treninziDTO, HttpStatus.OK);
+ 
+}
 }

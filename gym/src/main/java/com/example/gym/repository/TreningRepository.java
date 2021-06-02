@@ -14,5 +14,16 @@ public interface TreningRepository extends JpaRepository<Trening, Long>{
 	@Query("Select t from Trening t join fetch t.termini")
 	List<Trening> findTreningSort ();
 	
+	List<Trening> findByNaziv(String naziv);
+	
+	List<Trening> findByOpis(String opis);
+	
+	//List<Trening> findByTip_treninga(String tip_treninga);
+	
+	List<Trening> findByTrajanje(int trajanje);
+	
+	List<Trening> findByCena(Double cena);
+	
+	
 	
 }
