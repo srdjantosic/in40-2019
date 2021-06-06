@@ -88,12 +88,18 @@ public class TreningServiceImpl implements TreningService {
 	@Override
 	public List<Trening> findNaziv(String naziv) {
 		List<Trening> trening = this.treningRepository.findByNaziv( naziv);
+		if(trening == null) {
+			return null;
+		}
         return trening;
 	}
 
 	@Override
 	public List<Trening> findOpis(String opis) {
 		List<Trening> trening = this.treningRepository.findByOpis(opis);
+		if(trening == null) {
+			return null;
+		}
         return trening;
 	}
 
@@ -106,12 +112,18 @@ public class TreningServiceImpl implements TreningService {
 	@Override
 	public List<Trening> findTrajanje(int trajanje) {
 		List<Trening> trening = this.treningRepository.findByTrajanje(trajanje);
+		if(trening == null) {
+			return null;
+		}
         return trening;
 	}
 
 	@Override
 	public List<Trening> findCena(Double cena) {
 		List<Trening> trening = this.treningRepository.findByCena(cena);
+		if(trening == null) {
+			return null;
+		}
         return trening;
 	}
 	

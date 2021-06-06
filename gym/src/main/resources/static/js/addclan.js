@@ -8,8 +8,8 @@ $(document).on("submit", "#RegistracijaForm", function (event) {
     let email = $("#emailField").val();
     let lozinka = $("#passField").val();
     let datum_rodjenja = $("#datumField").val();
-    let kontakt = $("#kontaktField").val();
-
+    let kontakt = $("#kontaktField").val(); 
+    
     
     let newClan = {
         korisnicko_ime,
@@ -18,7 +18,8 @@ $(document).on("submit", "#RegistracijaForm", function (event) {
         prezime,
         kontakt,
         email,
-        datum_rodjenja
+        datum_rodjenja,
+        
          
        
     }

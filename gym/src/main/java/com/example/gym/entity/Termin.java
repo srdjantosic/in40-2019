@@ -1,5 +1,6 @@
 package com.example.gym.entity;
 
+
 import java.util.Date;
 import java.util.Set;
 
@@ -13,8 +14,8 @@ public class Termin {
 	@Column 
 	private Long id;
 	
-	@Column 
-	private Date datum;
+		@Column 
+		private Date  datum;
 	   
 
 	    @ManyToOne(fetch = FetchType.EAGER)

@@ -1,5 +1,6 @@
 package com.example.gym.entity.dto;
 
+
 import java.util.Date;
 
 public class TerminDTO {
@@ -19,8 +20,8 @@ public class TerminDTO {
 	public Date getDatum() {
 		return datum;
 	}
-	public void setDatum(Date datum) {
-		this.datum = datum;
+	public void setDatum(Date date) {
+		this.datum = date;
 	}
 
 	public Long getId() {

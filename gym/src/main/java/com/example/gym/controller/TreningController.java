@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -84,12 +85,17 @@ public TreningController(TreningService treningservice, TerminService terminServ
     		 System.out.println(termin.getId());
     		 TerminDTO tdto = new TerminDTO();
     		 tdto.setDatum(termin.getDatum());
+    		 tdto.setId(termin.getId());
     		 terminidto.add(tdto);
     	 }
+    	 
+    	 
     	 TreningDTO treningDTO = new TreningDTO(trening.getId(), trening.getNaziv(),
                  trening.getOpis(), trening.getTip_treninga(), trening.getTrajanje(), trening.getCena());
     	 treningDTO.setTermini((ArrayList<TerminDTO>) terminidto);
          treningDTOS.add(treningDTO);
+         
+         
      }
 
      return new ResponseEntity<>(treningDTOS, HttpStatus.OK);
@@ -166,6 +172,44 @@ public TreningController(TreningService treningservice, TerminService terminServ
  public ResponseEntity<List<TreningDTO>> getTreningPoTrajanju(@PathVariable("trajanje") int trajanje) {
      
      List<Trening> treninzi = this.treningservice.findTrajanje(trajanje);
+
+     List<TreningDTO> treninziDTO = new ArrayList<TreningDTO>();
+     for(Trening t : treninzi) {
+    	 TreningDTO treningDTO = new TreningDTO();
+         treningDTO.setId(t.getId());
+         treningDTO.setNaziv(t.getNaziv());
+         treningDTO.setOpis(t.getOpis());
+         treningDTO.setCena(t.getCena());
+         treningDTO.setTip_treninga(t.getTip_treninga());
+         treningDTO.setTrajanje(t.getTrajanje());
+        		 treninziDTO.add(treningDTO);
+     }
+    
+
+    
+     return new ResponseEntity<>(treninziDTO, HttpStatus.OK);
+ 
+}
+ 
+ @GetMapping(value = "/pretraga/{parametar}", produces = MediaType.APPLICATION_JSON_VALUE)
+ public ResponseEntity<List<TreningDTO>> pretragaTreninga(@PathVariable("parametar") String parametar) {
+	 
+	 List<Trening> treninzi = this.treningservice.findNaziv(parametar);
+	 
+	 if(treninzi.size() == 0) {
+		 treninzi = this.treningservice.findOpis(parametar);
+		 if(treninzi.size() == 0) {
+			 
+			 treninzi = this.treningservice.findCena(Double.parseDouble(parametar));
+			 if(treninzi.size() == 0) {
+				 treninzi = this.treningservice.findTrajanje(Integer.parseInt(parametar));
+				 if( treninzi.size() == 0) {
+					 return new  ResponseEntity<>( HttpStatus.NOT_FOUND);
+				 }
+			 }
+		 }
+	 }
+	 
 
      List<TreningDTO> treninziDTO = new ArrayList<TreningDTO>();
      for(Trening t : treninzi) {
