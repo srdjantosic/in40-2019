@@ -15,4 +15,6 @@ public interface TrenerService {
 	    Trener update(Trener trener) throws Exception;
 
 	    void delete(String korisnicko_ime);
+	    
+	    List<Trener> findTrenerNeAktivan();
 }

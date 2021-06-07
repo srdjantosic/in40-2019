@@ -45,12 +45,7 @@ public class TrenerServiceImpl implements TrenerService {
         }
 
       
-        trenerToUpdate.setLozinka(trener.getLozinka());
-        trenerToUpdate.setIme(trener.getIme());
-        trenerToUpdate.setPrezime(trener.getPrezime());
-        trenerToUpdate.setKontakt(trener.getKontakt());
-        trenerToUpdate.setEmail(trener.getEmail());
-        trenerToUpdate.setDatum_rodjenja(trener.getDatum_rodjenja());
+
         trenerToUpdate.setAktivan(trener.isAktivan());
         
 
@@ -63,6 +58,12 @@ public class TrenerServiceImpl implements TrenerService {
 	public void delete(String korisnicko_ime) {
 		 this.trenerrepository.deleteById(korisnicko_ime);
 		
+	}
+
+	@Override
+	public List<Trener> findTrenerNeAktivan() {
+		List<Trener> trener =this.trenerrepository.findFalse();
+		return trener;
 	}
 
 	

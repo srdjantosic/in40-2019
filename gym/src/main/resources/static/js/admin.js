@@ -34,3 +34,27 @@ $(document).on("submit", "#Fitnesscentarform", function (event) {
         }
     });
 });
+
+$(document).ready(function () {
+    $.ajax({
+        type: "GET",                                                
+        url: "http://localhost:8080/api/trener/aktivan",                 
+        dataType: "json",                                           
+        success: function (response) {                              
+            console.log("SUCCESS:\n", response);                    
+          
+            for (let trener of response) {                        
+                let row = "<tr>";                                   
+                row += "<td>" + trener.ime + "</td>";       
+                row += "<td>" + trener.prezime + "</td>";
+            
+            
+
+                $('#zahtevi').append(row);                        
+            }
+        },
+        error: function (response) {                                
+            console.log("ERROR:\n", response);
+        }
+    });
+});

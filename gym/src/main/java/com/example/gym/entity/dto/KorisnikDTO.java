@@ -4,6 +4,7 @@ public class KorisnikDTO {
 
 	private String korisnicko_ime;
 	private String lozinka;
+	private String role;
 	
 	
 	public KorisnikDTO() {
@@ -31,10 +32,21 @@ public class KorisnikDTO {
 	}
 
 
-	public KorisnikDTO(String korisnicko_ime, String lozinka) {
+	public String getRole() {
+		return role;
+	}
+
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+
+	public KorisnikDTO(String korisnicko_ime, String lozinka,String role) {
 		super();
 		this.korisnicko_ime = korisnicko_ime;
 		this.lozinka = lozinka;
+		this.role = role;
 	}
 	
 	

@@ -5,7 +5,7 @@ $(document).ready(function () {
         dataType: "json",                                           
         success: function (response) {                              
             console.log("SUCCESS:\n", response);                    
-            $('#table').html(response);
+         
             for (let trening of response) {                        
                 let row = "<tr>";                                   
                 row += "<td>" + trening.naziv + "</td>";       
@@ -32,7 +32,7 @@ $(document).ready(function () {
         dataType: "json",                                           
         success: function (response) {                              
             console.log("SUCCESS:\n", response);    
-            $('#Table').html(response);               
+            $('#treninzi').html(response);               
           
             for (let trening of response) {                        
                 let row = "<tr>";                                   
@@ -75,3 +75,30 @@ $(document).ready(function () {
         }
     });
 };
+$(document).on("submit","#Pretraga",function (event) { 
+    event.preventDefault();   
+    let parametar=$("#pretragaField").val();;
+    $.ajax({
+        type: "GET",                                                
+        url: "http://localhost:8080/api/treninzi/pretraga/"+parametar,                 
+        dataType: "json",                                           
+        success: function (response) {                              
+            console.log("SUCCESS:\n", response);                    
+            $('#treninzi').html(response);
+            for (let trening of response) {                        
+                let row = "<tr>";                                   
+                row += "<td>" + trening.naziv + "</td>";       
+                row += "<td>" + trening.opis + "</td>";
+                row += "<td>" + trening.tip_treninga + "</td>";
+                row += "<td>" + trening.trajanje + "</td>";
+                row += "<td>" + trening.cena + "</td>";
+            
+
+                $('#treninzi').append(row);                        
+            }
+        },
+        error: function (response) {                                
+            console.log("ERROR:\n", response);
+        }
+    });
+});

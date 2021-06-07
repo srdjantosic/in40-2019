@@ -9,7 +9,7 @@ $(document).on("submit", "#TrenerForm", function (event) {
     let lozinka = $("#passField").val();
     let datum_rodjenja = $("#datumField").val();
     let kontakt = $("#kontaktField").val();
-
+    let aktivan=false;
     let newTrener = {
         korisnicko_ime,
         lozinka,
@@ -18,7 +18,7 @@ $(document).on("submit", "#TrenerForm", function (event) {
         kontakt,
         email,
         datum_rodjenja,
-             
+        aktivan
     }
     
     
@@ -39,3 +39,4 @@ $(document).on("submit", "#TrenerForm", function (event) {
         }
     });
 });
+

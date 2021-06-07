@@ -128,6 +128,8 @@ public class Korisnik {
 		this.datum_rodjenja = datum_rodjenja;
 		this.aktivan = aktivan;
 	}
+
+	
 	
 	}
 	

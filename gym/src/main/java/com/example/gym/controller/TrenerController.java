@@ -1,12 +1,19 @@
 package com.example.gym.controller;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+
 import com.example.gym.entity.Trener;
 import com.example.gym.entity.dto.TrenerDTO;
 import com.example.gym.service.TrenerService;
@@ -39,5 +46,18 @@ public class TrenerController {
 	        
 	        return new ResponseEntity<>(newTrenerDTO, HttpStatus.CREATED);
 	    }
-
+	 
+	 
+	  @GetMapping(value = "/aktivan", produces = MediaType.APPLICATION_JSON_VALUE)
+	    public ResponseEntity<List<TrenerDTO>> getNeAktivni() {
+		  List<Trener> treneri = this.trenerservice.findTrenerNeAktivan();
+		  List<TrenerDTO> trenerDTOS = new ArrayList<>();
+	        for (Trener trener : treneri) {
+	            TrenerDTO trenerDTO = new TrenerDTO(trener.getkorisnicko_ime(), trener.getLozinka(),trener.isAktivan(),
+	                    trener.getIme(),trener.getPrezime(),trener.getKontakt(),trener.getEmail(),trener.getDatum_rodjenja());
+	            trenerDTOS.add(trenerDTO);	           
+	        }
+	        return new ResponseEntity<>(trenerDTOS ,HttpStatus.OK);
+	    }
+	
 }
