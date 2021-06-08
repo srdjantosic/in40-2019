@@ -39,7 +39,9 @@ public TreningController(TreningService treningservice, TerminService terminServ
      List<TreningDTO> treningDTOS = new ArrayList<>();
 
      for (Trening trening : treningList) {
-  
+    	 	// termin = termin.respository(trening_id)
+    	 //termindto od tog treninga
+    	 //treningdto ddati termindto
          TreningDTO treningDTO = new TreningDTO(trening.getId(), trening.getNaziv(),
                  trening.getOpis(), trening.getTip_treninga(), trening.getTrajanje(), trening.getCena());
          treningDTOS.add(treningDTO);

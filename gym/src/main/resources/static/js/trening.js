@@ -13,6 +13,7 @@ $(document).ready(function () {
                 row += "<td>" + trening.tip_treninga + "</td>";
                 row += "<td>" + trening.trajanje + "</td>";
                 row += "<td>" + trening.cena + "</td>";
+                
             
 
                 $('#treninzi').append(row);                        

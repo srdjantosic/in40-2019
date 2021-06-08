@@ -47,7 +47,7 @@ $(document).ready(function () {
                 let row = "<tr>";                                   
                 row += "<td>" + trener.ime + "</td>";       
                 row += "<td>" + trener.prezime + "</td>";
-                let btn = "<button class='btnPrihvati' data-id=" + trener.id + ">Prihvati</button>";
+                let btn = "<button class='btnPrihvati' data-id=" + trener.korisnicko_ime + ">Prihvati</button>";
                 row += "<td>" + btn + "</td>";                      // ubacujemo button u poslednju ćeliju reda
             
 
@@ -60,15 +60,24 @@ $(document).ready(function () {
     });
 });
 
-$(document).O('click','.btnPrihvati',function () {
+$(document).on('click','.btnPrihvati',function () {
+    let trenerKime = this.dataset.id;
+  
+    let trener={
+        trenerKime,
+    }
+
+    
+    
     $.ajax({
         type: "PUT",                                                
-        url: "http://localhost:8080/api/trener/updateTrener",                 
+        url: "http://localhost:8080/api/trener/updateTrener/" + trenerKime,                 
         dataType: "json",             
-        contentType:"aplication/json",                              
+        contentType:"application/json",  
+        data: JSON.stringify(trener),                            
         success: function (response) {                              
             console.log("SUCCESS:\n", response);                    
-          
+            $('[data-id="' + trenerKime + '"]').parent().parent().remove();
             
 
              
