@@ -47,11 +47,31 @@ $(document).ready(function () {
                 let row = "<tr>";                                   
                 row += "<td>" + trener.ime + "</td>";       
                 row += "<td>" + trener.prezime + "</td>";
-            
+                let btn = "<button class='btnPrihvati' data-id=" + trener.id + ">Prihvati</button>";
+                row += "<td>" + btn + "</td>";                      // ubacujemo button u poslednju ćeliju reda
             
 
                 $('#zahtevi').append(row);                        
             }
+        },
+        error: function (response) {                                
+            console.log("ERROR:\n", response);
+        }
+    });
+});
+
+$(document).O('click','.btnPrihvati',function () {
+    $.ajax({
+        type: "PUT",                                                
+        url: "http://localhost:8080/api/trener/updateTrener",                 
+        dataType: "json",             
+        contentType:"aplication/json",                              
+        success: function (response) {                              
+            console.log("SUCCESS:\n", response);                    
+          
+            
+
+             
         },
         error: function (response) {                                
             console.log("ERROR:\n", response);

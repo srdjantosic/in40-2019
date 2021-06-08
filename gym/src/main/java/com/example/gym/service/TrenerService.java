@@ -12,7 +12,7 @@ public interface TrenerService {
 
 	    Trener create(Trener trener) throws Exception;
 
-	    Trener update(Trener trener) throws Exception;
+	    Trener update(String korisnicko) throws Exception;
 
 	    void delete(String korisnicko_ime);
 	    

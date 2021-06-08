@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -59,5 +60,25 @@ public class TrenerController {
 	        }
 	        return new ResponseEntity<>(trenerDTOS ,HttpStatus.OK);
 	    }
-	
+	  
+	   @PutMapping(value = "/updateTrener/{id}", consumes = MediaType.APPLICATION_JSON_VALUE,
+	            produces = MediaType.APPLICATION_JSON_VALUE)
+	    public ResponseEntity<TrenerDTO> updateTrener(@PathVariable String id, @RequestBody TrenerDTO trenerDTO) throws Exception {
+	       
+	        Trener updatedEm = trenerservice.update(id);
+	    
+
+	     TrenerDTO newTrener = new TrenerDTO();
+	     newTrener.setAktivan(updatedEm.isAktivan());
+	     newTrener.setIme(updatedEm.getIme());
+	     newTrener.setPrezime(updatedEm.getPrezime());
+	     newTrener.setEmail(updatedEm.getEmail());
+	     newTrener.setKorisnicko_ime(updatedEm.getkorisnicko_ime());
+	     newTrener.setDatum_rodjenja(updatedEm.getDatum_rodjenja());
+	     newTrener.setLozinka(updatedEm.getLozinka());
+	     newTrener.setKontakt(updatedEm.getKontakt());
+	     
+	       
+	        return new ResponseEntity<>(newTrener, HttpStatus.OK);
+	    }
 }

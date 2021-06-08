@@ -1,5 +1,6 @@
 package com.example.gym.service.impl;
 import com.example.gym.entity.Trener;
+import com.example.gym.entity.dto.TrenerDTO;
 import com.example.gym.repository.TrenerRepository;
 import com.example.gym.service.TrenerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,15 +39,17 @@ public class TrenerServiceImpl implements TrenerService {
 	}
 
 	@Override
-	public Trener update(Trener trener) throws Exception {
-		Trener trenerToUpdate = this.trenerrepository.getOne(trener.getkorisnicko_ime());
+	public Trener update(String korisnicko) throws Exception {
+		Trener trenerToUpdate = this.trenerrepository.getOne(korisnicko);
+		System.out.println(trenerToUpdate.getkorisnicko_ime());
+		
         if (trenerToUpdate == null) {
-            throw new Exception("Employee doesn't exist!");
+            throw new Exception("Trener doesn't exist!");
         }
 
       
-
-        trenerToUpdate.setAktivan(trener.isAktivan());
+       
+        trenerToUpdate.setAktivan(true);
         
 
      
