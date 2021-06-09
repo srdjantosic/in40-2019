@@ -17,9 +17,10 @@ public class TreningDTO {
 	
 	private double cena;
 	
+	private TerminDTO termin;
+	private FitnessCentarDTO fitness;
+	
 	private ArrayList<TerminDTO> termini;
-	
-	
 
 	public TreningDTO() {
 		// TODO Auto-generated constructor stub
@@ -111,6 +112,18 @@ public class TreningDTO {
 
 
 
+	public TerminDTO getTermin() {
+		return termin;
+	}
+
+
+
+	public void setTermin(TerminDTO termin) {
+		this.termin = termin;
+	}
+
+
+
 	public ArrayList<TerminDTO> getTermini() {
 		return termini;
 	}
@@ -120,6 +133,22 @@ public class TreningDTO {
 	public void setTermini(ArrayList<TerminDTO> termini) {
 		this.termini = termini;
 	}
+
+
+
+	public FitnessCentarDTO getFitness() {
+		return fitness;
+	}
+
+
+
+	public void setFitness(FitnessCentarDTO fitness) {
+		this.fitness = fitness;
+	}
+
+
+
+	
 	
 
 }

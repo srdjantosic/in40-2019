@@ -45,7 +45,7 @@ public class FitnessCentarServiceImpl implements FitnessCentarService {
 	public FitnessCentar update(FitnessCentar fitnesscentar) throws Exception {
 		FitnessCentar fitnesscentarToUpdate = this.fitnesscentarrepository.getOne(fitnesscentar.getId());
 	        if (fitnesscentarToUpdate == null) {
-	            throw new Exception("Employee doesn't exist!");
+	            throw new Exception("Fitness centar doesn't exist!");
 	        }
 
 	      

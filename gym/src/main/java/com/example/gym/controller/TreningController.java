@@ -1,6 +1,7 @@
 package com.example.gym.controller;
 import com.example.gym.entity.Termin;
 import com.example.gym.entity.Trening;
+import com.example.gym.entity.dto.FitnessCentarDTO;
 import com.example.gym.entity.dto.TerminDTO;
 import com.example.gym.entity.dto.TreningDTO;
 import com.example.gym.service.TerminService;
@@ -39,12 +40,21 @@ public TreningController(TreningService treningservice, TerminService terminServ
      List<TreningDTO> treningDTOS = new ArrayList<>();
 
      for (Trening trening : treningList) {
-    	 	// termin = termin.respository(trening_id)
-    	 //termindto od tog treninga
-    	 //treningdto ddati termindto
-         TreningDTO treningDTO = new TreningDTO(trening.getId(), trening.getNaziv(),
-                 trening.getOpis(), trening.getTip_treninga(), trening.getTrajanje(), trening.getCena());
-         treningDTOS.add(treningDTO);
+    	 	List<Termin> termini  = terminService.findSorted(trening.getId());
+    	 	for(Termin t: termini) {
+    	 		Termin saFitnessCentrom = terminService.findFitnessCentarTermin(t.getId());
+    	 		FitnessCentarDTO fitness = new FitnessCentarDTO();
+    	 		fitness.setNaziv(saFitnessCentrom.getFitnesscentar().getNaziv());
+    	 		TerminDTO terminDTO = new TerminDTO();
+    	 		terminDTO.setId(t.getId());
+    	 		terminDTO.setDatum(t.getDatum());
+    	 		 TreningDTO treningDTO = new TreningDTO(trening.getId(), trening.getNaziv(),
+    	                 trening.getOpis(), trening.getTip_treninga(), trening.getTrajanje(), trening.getCena());
+    	 		 treningDTO.setTermin(terminDTO);
+    	 		 treningDTO.setFitness(fitness);
+    	         treningDTOS.add(treningDTO);
+    	 	}
+    	
      }
 
 

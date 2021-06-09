@@ -14,4 +14,6 @@ public interface TerminService {
     void delete(Long id);
     
     List<Termin> findSorted(Long id);
+    
+    Termin findFitnessCentarTermin(Long id);
 }

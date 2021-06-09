@@ -5,7 +5,7 @@ $(document).ready(function () {
         dataType: "json",                                           
         success: function (response) {                              
             console.log("SUCCESS:\n", response);                    
-         
+         $('#treninzi').find('tbody').children( 'tr:not(:first)').remove();
             for (let trening of response) {                        
                 let row = "<tr>";                                   
                 row += "<td>" + trening.naziv + "</td>";       
@@ -13,7 +13,8 @@ $(document).ready(function () {
                 row += "<td>" + trening.tip_treninga + "</td>";
                 row += "<td>" + trening.trajanje + "</td>";
                 row += "<td>" + trening.cena + "</td>";
-                
+                row += "<td>" + trening.termin.datum + "</td>";
+                row += "<td>" + trening.fitness.naziv + "</td>";
             
 
                 $('#treninzi').append(row);                        
@@ -42,7 +43,8 @@ $(document).ready(function () {
                 row += "<td>" + trening.tip_treninga + "</td>";
                 row += "<td>" + trening.trajanje + "</td>";
                 row += "<td>" + trening.cena + "</td>";
-              
+               
+            
 
                 $('#treninzi').append(row);                       
             }
@@ -59,7 +61,7 @@ $(document).ready(function () {
         dataType: "json",                                           
         success: function (response) {                              
             console.log("SUCCESS:\n", response);                   
-           // $('#treninzi').delete(row);  
+            $('#treninzi').html(response);  
             for (let trening of response) {                        
                 let row = "<tr>";                                   
                 row += "<td>" + trening.naziv + "</td>";     

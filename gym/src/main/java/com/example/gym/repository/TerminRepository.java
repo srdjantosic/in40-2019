@@ -9,5 +9,9 @@ public interface TerminRepository extends JpaRepository<Termin, Long> {
 	
 	@Query("Select t from Termin t join fetch t.trening  where t.trening.id =?1 order by t.datum desc")
 	List<Termin> findSorted(Long id);
+	
+	@Query("Select t from Termin t join fetch t.fitnesscentar  where t.id =?1")
+	Termin findTerminFitnessCentar(Long id);
 
+	
 }

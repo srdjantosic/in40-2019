@@ -63,6 +63,14 @@ public class TerminServiceImpl implements TerminService{
 		}
 		return list;
 	}
+	@Override
+	public Termin findFitnessCentarTermin(Long id) {
+		Termin termin = this.terminrepository.findTerminFitnessCentar(id);
+		if( termin == null) {
+			return null;
+		}
+		return termin;
+	}
 	
 
 }

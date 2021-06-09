@@ -21,7 +21,7 @@ public class Clan extends Korisnik {
 	@OneToMany(mappedBy = "clan", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Termin> termin;
 	
-	//@ManyToOne(fetch = FetchType.EAGER)
+
 	
 	
 	public Clan() {
