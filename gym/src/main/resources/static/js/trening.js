@@ -5,7 +5,7 @@ $(document).ready(function () {
         dataType: "json",                                           
         success: function (response) {                              
             console.log("SUCCESS:\n", response);                    
-         $('#treninzi').find('tbody').children( 'tr:not(:first)').remove();
+         
             for (let trening of response) {                        
                 let row = "<tr>";                                   
                 row += "<td>" + trening.naziv + "</td>";       
@@ -35,7 +35,7 @@ $(document).ready(function () {
         success: function (response) {                              
             console.log("SUCCESS:\n", response);    
             $('#treninzi').html(response);               
-          
+            $('#treninzi').find('tbody').children( 'tr:not(:first)').remove();
             for (let trening of response) {                        
                 let row = "<tr>";                                   
                 row += "<td>" + trening.naziv + "</td>";     
@@ -88,7 +88,8 @@ $(document).on("submit","#Pretraga",function (event) {
         success: function (response) {                              
             console.log("SUCCESS:\n", response);                    
             $('#treninzi').html(response);
-            for (let trening of response) {                        
+            for (let trening of response) {              
+                $('#treninzi').find('tbody').children( 'tr:not(:first)').remove();
                 let row = "<tr>";                                   
                 row += "<td>" + trening.naziv + "</td>";       
                 row += "<td>" + trening.opis + "</td>";
