@@ -1,42 +1,43 @@
-// Dodavanje novog zaposlenog
-$(document).on("submit", "#RegistracijaForm", function (event) {     // kada je submit-ovana forma za kreiranje novog zaposlenog
-    event.preventDefault();                                         // sprečavamo automatsko slanje zahteva da bismo pokupili (i validirali) podatke iz forme
-
-    // preuzimamo vrednosti unete u formi
-    let ime = $("#ime").val();
-    let prezime = $("#prezime").val();
-    let korisnicko_ime = $("#korisnicko_ime").val();
-    let email = $("#email").val();
-    let password = $("#password").val();
-    let datum_rodjenja = $("#datum_rodjenja").val();
-    let kontakt = $("#kontakt").val();
-    // kreiramo objekat zaposlenog
-    // nazivi svih atributa moraju se poklapati sa nazivima na backend-u
-    let newClan = {
-        ime,
-        prezime,
-        korisnicko_ime,
-        email,
-        password,
-        datum_rodjenja,
-        kontakt     // zbog backend-a jobPosition moramo preimenovati u atribut position
-    }
-    
-    // ajax poziv za kreiranje novog zaposlenog na backend-u
+$(document).ready(function () {    
     $.ajax({
-        type: "POST",                                               // HTTP metoda je POST
-        url: "http://localhost:8080/api/clan",                 // URL na koji se šalju podaci
-        dataType: "json",                                           // tip povratne vrednosti
-        contentType: "application/json",                            // tip podataka koje šaljemo
-        data: JSON.stringify(newClan),                          // u body-ju šaljemo novog zaposlenog (JSON.stringify() pretvara JavaScript objekat u JSON)
-        success: function (response) {                              // ova f-ja se izvršava posle uspešnog zahteva
-            console.log(response);                                  // ispisujemo u konzoli povratnu vrednost radi provere
+        type: "GET",                                                
+        url: "http://localhost:8080/api/fitnesscentar",                 
+        dataType: "json",                                          
+        success: function (response) {                              
+            console.log("SUCCESS:\n", response);                    
 
-            alert("Clan " + response.id + " je uspešno kreiran!");// prikazujemo poruku uspeha korisniku
-            window.location.href = "RegistracijaKorisnika.html";                // redirektujemo ga na employees.html stranicu
+            for (let fitnesscentar of response) {                        
+                let row = "<tr>";                                   
+                row += "<td>" + fitnesscentar.naziv + "</td>";       
+                row += "<td>" + fitnesscentar.adresa + "</td>";
+                row += "<td>" + fitnesscentar.broj_tel_centrale + "</td>";
+                row += "<td>" + fitnesscentar.email + "</td>";  
+                btn = "<button class='btnDelete' data-id=" + fitnesscentar.id + ">Delete</button>";
+                row += "<td>" + btn + "</td>";
+                row += "</tr>";                                    
+
+                $('#centri').append(row);                      
+            }
         },
-        error: function () {                                        // ova f-ja se izvršava posle neuspešnog zahteva
-            alert("Greška prilikom dodavanja korisnika!");
+        error: function (response) {                               
+            console.log("ERROR:\n", response);
+        }
+    });
+});
+
+$(document).on('click', '.btnDelete', function () {
+    let fitnessId = this.dataset.id;
+
+    $.ajax({
+        type: "DELETE",
+        url: "http://localhost:8080/api/fitnesscentar/" + fitnessId,
+        dataType: "json",
+        success: function () {
+            console.log("SUCCESS");
+            $('[data-id="' + fitnessId + '"]').parent().parent().remove();  // ukloni red tabele u kom se nalazi element sa data-id atributom = employeeId
+        },
+        error: function () {
+            alert("Greška prilikom brisanja fitness centra!");
         }
     });
 });

@@ -3,6 +3,9 @@ import com.example.gym.entity.Sala;
 
 import java.util.List;
 
+
+
+
 public interface SalaService {
 
 	Sala findOne(Long id);

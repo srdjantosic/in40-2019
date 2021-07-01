@@ -47,8 +47,8 @@ public class FitnessCentarServiceImpl implements FitnessCentarService {
 	        if (fitnesscentarToUpdate == null) {
 	            throw new Exception("Fitness centar doesn't exist!");
 	        }
-
-	      
+	        fitnesscentarToUpdate.setNaziv(fitnesscentar.getNaziv());
+	        fitnesscentarToUpdate.setEmail(fitnesscentar.getEmail());
 	        fitnesscentarToUpdate.setAdresa(fitnesscentar.getAdresa());
 	        fitnesscentarToUpdate.setBroj_tel_centrale(fitnesscentar.getBroj_tel_centrale());
 

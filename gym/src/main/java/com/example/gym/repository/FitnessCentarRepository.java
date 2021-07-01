@@ -10,6 +10,7 @@ public interface FitnessCentarRepository extends JpaRepository<FitnessCentar, Lo
 
 	  
 	 List<FitnessCentar> findByAdresa(String adresa);
+	 List<FitnessCentar> findAll();
 
 	
 

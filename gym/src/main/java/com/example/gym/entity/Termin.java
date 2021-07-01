@@ -120,6 +120,13 @@ public class Termin {
 		}
 
 
+		public Termin(Long id, Date datum) {
+			super();
+			this.id = id;
+			this.datum = datum;
+		}
+
+
 	
 
 	

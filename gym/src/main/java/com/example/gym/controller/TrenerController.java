@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.example.gym.entity.Trener;
+
 import com.example.gym.entity.dto.TrenerDTO;
 import com.example.gym.service.TrenerService;
 
@@ -81,4 +83,33 @@ public class TrenerController {
 	       
 	        return new ResponseEntity<>(newTrener, HttpStatus.OK);
 	    }
+	   @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	    public ResponseEntity<List<TrenerDTO>> getTrener() {
+	      
+	        List<Trener> trenerList = this.trenerservice.findAll();
+
+	  
+	        List<TrenerDTO> treneriDTOS = new ArrayList<>();
+
+	        for (Trener trener: trenerList) {
+	           
+	           TrenerDTO trenerDTO = new TrenerDTO( trener.getkorisnicko_ime(),
+	     trener.getLozinka(),trener.isAktivan(), trener.getIme(),trener.getPrezime(),trener.getKontakt(), trener.getEmail(),trener.getDatum_rodjenja());
+	            treneriDTOS.add(trenerDTO);
+	        }
+
+	        return new ResponseEntity<>(treneriDTOS, HttpStatus.OK);
+	    }
+
+/*@DeleteMapping(value = "/{korisnicko_ime}")
+public ResponseEntity<Void> deleteTrener(@PathVariable String korisnicko_ime) {
+    
+    this.trenerservice.delete(korisnicko_ime);
+
+   
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 }
+*/
+}
+
+

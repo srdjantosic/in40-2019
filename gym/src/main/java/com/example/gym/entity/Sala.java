@@ -27,6 +27,13 @@ public class Sala {
 		
 	}
 
+	public Sala(Long id, int kapacitet, int oznaka) {
+		super();
+		this.id = id;
+		this.kapacitet = kapacitet;
+		this.oznaka = oznaka;
+	}
+
 	public int getKapacitet() {
 		return kapacitet;
 	}

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 
 @Service
 public class TrenerServiceImpl implements TrenerService {
@@ -58,8 +60,9 @@ public class TrenerServiceImpl implements TrenerService {
 	}
 
 	@Override
+	@Transactional
 	public void delete(String korisnicko_ime) {
-		 this.trenerrepository.deleteById(korisnicko_ime);
+		this.trenerrepository.deleteTrener(korisnicko_ime);
 		
 	}
 

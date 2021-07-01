@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css5.css">
+        <meta charset="utf-8">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/sala.js"></script>
+        
+        
+     
+    </head>
+
+    <body>
+        <div class="box">
+            
+            <table id="sale", border=1>
+            
+                    <tbody>
+                            <tr>
+                                <th>Kapacitet</th>
+                                <th>Oznaka </th>
+                                <th>Fitness Centar</th>
+                             
+                               
+                               
+                            </tr>
+                        
+                    </tbody>
+                </table>
+                <br/>
+                <br/>
+                <div class="row">
+                    <div class="column">
+                        <p><b>Dodaj novu salu</b></p>
+                        <form id="dodaj">
+                            <label for="kapField" ><b><i> Kapacitet:</b> </i></label> 
+                            <input id="kapField" type="text" name="kap" placeholder="Unesite kapacitet sale" 
+                            maxlength="35" />
+                            <br/>
+        
+                            <br/>
+                            <label for="oznakaField"><b><i>Oznaka sale</i></b></label>
+                            <input id="oznakaField" type="text" name="oznaka" placeholder="Unesite oznaku sale"/>
+                            <br/>   
+                            <br/>
+                            <input type="submit" value="Dodaj salu ">
+                        </form>
+                    </div>
+                   <div class="column">
+                    <p><b>Unesite podatke za azuriranje i pritisnite dugme koje zelite</b></p>
+                    <form id="azuriraj">
+                        <label for="kapaField" ><b><i> Kapacitet:</b> </i></label> 
+                        <input id="kapaField" type="text" name="kap" placeholder="Unesite kapacitet sale" 
+                        maxlength="35" />
+                        <br/>
+    
+                        <br/>
+                        <label for="oznakaaField"><b><i>Oznaka sale:</i></b></label>
+                        <input id="oznakaaField" type="text" name="oznaka" placeholder="Unesite oznaku sale"/>
+                        <br/>   
+                        <br/>
+                      
+                    </form>
+                   </div>
+                    
+                </div>
+               
+        </div>
+    
+    </body>
+</html>
