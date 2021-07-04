@@ -1,9 +1,9 @@
-INSERT INTO ADMINISTRATOR (KORISNICKO_IME,lozinka,ime,prezime,kontakt,email,datum_rodjenja,aktivan) VALUES ('dead','12','Dea','Simic','0644509200','dea@gmail.com', '14.07.2000',TRUE)
-INSERT INTO CLAN (KORISNICKO_IME,lozinka,ime,prezime,kontakt,email,datum_rodjenja,aktivan) VALUES ('mikis','mikica','Milos','Ivanovic','0662546802','milos@gmail.com', '19.02.2001',FALSE)
-INSERT INTO CLAN (KORISNICKO_IME,lozinka,ime,prezime,kontakt,email,datum_rodjenja,aktivan) VALUES ('dzoni','dzon123','Nikola','Jelic','0642918222','nikolaj@gmail.com', '01.07.1989',TRUE)
+INSERT INTO ADMINISTRATOR (KORISNICKO_IME,lozinka,ime,prezime,kontakt,email,datum_rodjenja,aktivan,obrisan) VALUES ('dead','12','Dea','Simic','0644509200','dea@gmail.com', '14.07.2000',TRUE,FALSE)
+INSERT INTO CLAN (KORISNICKO_IME,lozinka,ime,prezime,kontakt,email,datum_rodjenja,aktivan,obrisan) VALUES ('mikis','mikica','Milos','Ivanovic','0662546802','milos@gmail.com', '19.02.2001',FALSE,FALSE)
+INSERT INTO CLAN (KORISNICKO_IME,lozinka,ime,prezime,kontakt,email,datum_rodjenja,aktivan,obrisan) VALUES ('dzoni','dzon123','Nikola','Jelic','0642918222','nikolaj@gmail.com', '01.07.1989',TRUE,FALSE)
 
-INSERT INTO TRENER (KORISNICKO_IME,lozinka,ime,prezime,kontakt,email,datum_rodjenja,aktivan) VALUES ('Stefa','stef','Stefan','Simic','0644509200','stefan@gmail.com', '31.09.1996',TRUE)
-INSERT INTO TRENER (KORISNICKO_IME,lozinka,ime,prezime,kontakt,email,datum_rodjenja,aktivan) VALUES ('Marijagym','maka','Marija','Kitic','0644509200','maki@gmail.com', '22.08.1992',FALSE)
+INSERT INTO TRENER (KORISNICKO_IME,lozinka,ime,prezime,kontakt,email,datum_rodjenja,aktivan,obrisan) VALUES ('Stefa','stef','Stefan','Simic','0644509200','stefan@gmail.com', '31.09.1996',TRUE,FALSE)
+INSERT INTO TRENER (KORISNICKO_IME,lozinka,ime,prezime,kontakt,email,datum_rodjenja,aktivan,obrisan) VALUES ('Marijagym','maka','Marija','Kitic','0644509200','maki@gmail.com', '22.08.1992',FALSE,FALSE)
 
 
 INSERT INTO FITNESS_CENTAR (naziv,adresa,broj_tel_centrale,email) VALUES ('MyscleGym','Stevana Sindjelica 32','0621209200','musclegym@gmail.com')

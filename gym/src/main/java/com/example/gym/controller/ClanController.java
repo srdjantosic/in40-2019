@@ -29,14 +29,14 @@ import com.example.gym.service.ClanService;
 		    public ResponseEntity<ClanDTO> createClan(@RequestBody ClanDTO clanDTO) throws Exception {
 		      
 		        Clan clan = new Clan(clanDTO.getKorisnicko_ime(), clanDTO.getLozinka(), clanDTO.getIme(),
-		                clanDTO.getPrezime(), clanDTO.getKontakt(), clanDTO.getEmail(), clanDTO.getDatum_rodjenja(), clanDTO.isAktivan());
-
+		                clanDTO.getPrezime(), clanDTO.getKontakt(), clanDTO.getEmail(), clanDTO.getDatum_rodjenja(), clanDTO.isAktivan(), clanDTO.isObrisan());
+		        clan.setObrisan(false);
 	
 		      Clan newClan = clanservice.create(clan);
 
 		        
 		        ClanDTO newClanDTO = new ClanDTO (newClan.getkorisnicko_ime(), newClan.getLozinka(),newClan.getIme(),
-		        		newClan.getPrezime(),newClan.getKontakt(), newClan.getEmail(), newClan.getDatum_rodjenja(),newClan.isAktivan());
+		        		newClan.getPrezime(),newClan.getKontakt(), newClan.getEmail(), newClan.getDatum_rodjenja(),newClan.isAktivan(), newClan.isObrisan());
 
 		        
 		        return new ResponseEntity<>(newClanDTO,HttpStatus.CREATED);

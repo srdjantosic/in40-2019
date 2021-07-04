@@ -29,18 +29,19 @@ $(document).ready(function () {
     });
 });
 $(document).on('click', '.btnDelet', function () {
-    let trenerId = this.dataset.korisnicko_ime;
-
+    let id = this.dataset.id;
+    console.log(id);
     $.ajax({
         type: "DELETE",
-        url: "http://localhost:8080/api/trener/" + trenerId,
+        url: "http://localhost:8080/api/trener/" + id,
         dataType: "json",
         success: function () {
             console.log("SUCCESS");
-            $('[data-id="' + trenerId + '"]').parent().parent().remove();  // ukloni red tabele u kom se nalazi element sa data-id atributom = employeeId
+            $('[data-id="' + id + '"]').parent().parent().remove();  // ukloni red tabele u kom se nalazi element sa data-id atributom = employeeId
         },
         error: function () {
             alert("Greška prilikom brisanja fitness centra!");
         }
     });
 });
+   

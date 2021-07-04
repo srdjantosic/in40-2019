@@ -11,6 +11,8 @@ public interface FitnessCentarService {
 
     FitnessCentar update(FitnessCentar fitnesscentar) throws Exception;
 
+    FitnessCentar nadji(String naziv);
+    
     void delete(Long id);
 	
 	

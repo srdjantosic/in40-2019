@@ -13,6 +13,8 @@ public class Korisnik {
 	@Column
 	private String lozinka;
 
+	@Column
+	private boolean obrisan;
 
 	@Column
 	private String ime;
@@ -117,7 +119,7 @@ public class Korisnik {
 	}
 
 	public Korisnik(String korisnicko_ime, String lozinka, String ime, String prezime, String kontakt, String email,
-			String datum_rodjenja, boolean aktivan) {
+			String datum_rodjenja, boolean aktivan, boolean obrisan) {
 		super();
 		this.korisnicko_ime = korisnicko_ime;
 		this.lozinka = lozinka;
@@ -127,6 +129,23 @@ public class Korisnik {
 		this.email = email;
 		this.datum_rodjenja = datum_rodjenja;
 		this.aktivan = aktivan;
+		this.obrisan=obrisan;
+	}
+
+	public String getKorisnicko_ime() {
+		return korisnicko_ime;
+	}
+
+	public void setKorisnicko_ime(String korisnicko_ime) {
+		this.korisnicko_ime = korisnicko_ime;
+	}
+
+	public boolean isObrisan() {
+		return obrisan;
+	}
+
+	public void setObrisan(boolean obrisan) {
+		this.obrisan = obrisan;
 	}
 
 	

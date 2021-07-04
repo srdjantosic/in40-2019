@@ -38,18 +38,34 @@ public class TrenerController {
 	    public ResponseEntity<TrenerDTO> createTrener(@RequestBody TrenerDTO trenerDTO) throws Exception {
 	      
 	       Trener trener = new Trener(trenerDTO.getKorisnicko_ime(), trenerDTO.getLozinka(), trenerDTO.getIme(),
-		                trenerDTO.getPrezime(), trenerDTO.getKontakt(), trenerDTO.getEmail(), trenerDTO.getDatum_rodjenja(), trenerDTO.isAktivan());
+		                trenerDTO.getPrezime(), trenerDTO.getKontakt(), trenerDTO.getEmail(), trenerDTO.getDatum_rodjenja(), trenerDTO.isAktivan(),trenerDTO.isObrisan());
 
-	      
+	      trener.setObrisan(false);
 	        Trener newTrener = trenerservice.create(trener);
 
 	        
 	       TrenerDTO newTrenerDTO = new TrenerDTO(newTrener.getkorisnicko_ime(), newTrener.getLozinka(),newTrener.isAktivan(),
-	        		newTrener.getPrezime(),newTrener.getKontakt(), newTrener.getEmail(), newTrener.getDatum_rodjenja(),newTrener.getIme());
+	        		newTrener.getPrezime(),newTrener.getKontakt(), newTrener.getEmail(), newTrener.getDatum_rodjenja(),newTrener.getIme(), newTrener.isObrisan());
 	        
 	        return new ResponseEntity<>(newTrenerDTO, HttpStatus.CREATED);
 	    }
-	 
+	 @PostMapping(value="/aktivnost", consumes = MediaType.APPLICATION_JSON_VALUE,
+	            produces = MediaType.APPLICATION_JSON_VALUE)
+	    public ResponseEntity<TrenerDTO> createnTrener(@RequestBody TrenerDTO trenerDTO) throws Exception {
+	      
+	       Trener trener = new Trener(trenerDTO.getKorisnicko_ime(), trenerDTO.getLozinka(), trenerDTO.getIme(),
+		                trenerDTO.getPrezime(), trenerDTO.getKontakt(), trenerDTO.getEmail(), trenerDTO.getDatum_rodjenja(), trenerDTO.isAktivan(),trenerDTO.isObrisan());
+
+	      trener.setObrisan(false);
+	      trener.setAktivan(true);
+	        Trener newTrener = trenerservice.create(trener);
+
+	        
+	       TrenerDTO newTrenerDTO = new TrenerDTO(newTrener.getkorisnicko_ime(), newTrener.getLozinka(),newTrener.isAktivan(),
+	        		newTrener.getPrezime(),newTrener.getKontakt(), newTrener.getEmail(), newTrener.getDatum_rodjenja(),newTrener.getIme(), newTrener.isObrisan());
+	        
+	        return new ResponseEntity<>(newTrenerDTO, HttpStatus.CREATED);
+	    }
 	 
 	  @GetMapping(value = "/aktivan", produces = MediaType.APPLICATION_JSON_VALUE)
 	    public ResponseEntity<List<TrenerDTO>> getNeAktivni() {
@@ -57,7 +73,7 @@ public class TrenerController {
 		  List<TrenerDTO> trenerDTOS = new ArrayList<>();
 	        for (Trener trener : treneri) {
 	            TrenerDTO trenerDTO = new TrenerDTO(trener.getkorisnicko_ime(), trener.getLozinka(),trener.isAktivan(),
-	                    trener.getIme(),trener.getPrezime(),trener.getKontakt(),trener.getEmail(),trener.getDatum_rodjenja());
+	                    trener.getIme(),trener.getPrezime(),trener.getKontakt(),trener.getEmail(),trener.getDatum_rodjenja(), trener.isObrisan());
 	            trenerDTOS.add(trenerDTO);	           
 	        }
 	        return new ResponseEntity<>(trenerDTOS ,HttpStatus.OK);
@@ -92,24 +108,26 @@ public class TrenerController {
 	        List<TrenerDTO> treneriDTOS = new ArrayList<>();
 
 	        for (Trener trener: trenerList) {
-	           
-	           TrenerDTO trenerDTO = new TrenerDTO( trener.getkorisnicko_ime(),
-	     trener.getLozinka(),trener.isAktivan(), trener.getIme(),trener.getPrezime(),trener.getKontakt(), trener.getEmail(),trener.getDatum_rodjenja());
-	            treneriDTOS.add(trenerDTO);
+	           if(!trener.isObrisan()) {
+	        	   TrenerDTO trenerDTO = new TrenerDTO( trener.getkorisnicko_ime(),
+	        			   trener.getLozinka(),trener.isAktivan(), trener.getIme(),trener.getPrezime(),trener.getKontakt(), trener.getEmail(),trener.getDatum_rodjenja(), trener.isObrisan());
+	        	   treneriDTOS.add(trenerDTO);
+	           }
 	        }
 
 	        return new ResponseEntity<>(treneriDTOS, HttpStatus.OK);
 	    }
 
-/*@DeleteMapping(value = "/{korisnicko_ime}")
-public ResponseEntity<Void> deleteTrener(@PathVariable String korisnicko_ime) {
-    
-    this.trenerservice.delete(korisnicko_ime);
 
-   
-    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-}
-*/
+		 @DeleteMapping(value = "/{id}")
+		    public ResponseEntity<Void> deleteCentar(@PathVariable String id) {
+		       System.out.println(id);
+		        this.trenerservice.delete(id);
+
+		       
+		        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		    }
+		
 }
 
 

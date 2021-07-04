@@ -62,6 +62,13 @@ public class FitnessCentarServiceImpl implements FitnessCentarService {
 		 this.fitnesscentarrepository.deleteById(id);
 		
 	}
+
+	@Override
+	public FitnessCentar nadji(String naziv) {
+		return this.fitnesscentarrepository.nadjiNaziv(naziv);
+		
+	}
+	
 	
 	
 	

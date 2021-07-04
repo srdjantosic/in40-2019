@@ -22,6 +22,8 @@ private String korisnicko_ime;
 	
 	
 	private String datum_rodjenja;
+	
+	private boolean obrisan;
 
 	
 	public TrenerDTO() {
@@ -110,7 +112,7 @@ private String korisnicko_ime;
 
 
 	public TrenerDTO(String korisnicko_ime, String lozinka, boolean aktivan, String ime, String prezime, String kontakt,
-			String email, String datum_rodjenja) {
+			String email, String datum_rodjenja, boolean obrisan) {
 		super();
 		this.korisnicko_ime = korisnicko_ime;
 		this.lozinka = lozinka;
@@ -120,6 +122,17 @@ private String korisnicko_ime;
 		this.kontakt = kontakt;
 		this.email = email;
 		this.datum_rodjenja = datum_rodjenja;
+		this.obrisan=obrisan;
+	}
+
+
+	public boolean isObrisan() {
+		return obrisan;
+	}
+
+
+	public void setObrisan(boolean obrisan) {
+		this.obrisan = obrisan;
 	}
 
 

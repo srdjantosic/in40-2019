@@ -26,6 +26,34 @@ $(document).ready(function () {
     });
 });
 
+$(document).ready(function () {    
+    $.ajax({
+        type: "GET",                                                
+        url: "http://localhost:8080/api/fitnesscentar",                 
+        dataType: "json",                                          
+        success: function (response) {                              
+            console.log("SUCCESS:\n", response);                    
+
+            for (let fitnesscentar of response) {  
+                var text = fitnesscentar.naziv;
+                var value = fitnesscentar.naziv;                      
+                var option = new Option(text, value); $('#select').append($(option));                    
+            }
+        },
+        error: function (response) {                               
+            console.log("ERROR:\n", response);
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
 $(document).on('click', '.btnDelete', function () {
     let salaId = this.dataset.id;
 
@@ -48,20 +76,21 @@ $(document).on("submit", "#dodaj", function (event) {
 
     let kapacitet= $("#kapField").val();
     let oznaka = $("#oznakaField").val();
+    let naziv=$("#select").val();
     
    
     
     
     let newSala= {
        kapacitet,
-       oznaka
+       oznaka,
         
     }
     
    
     $.ajax({
         type: "POST",                                               
-        url: "http://localhost:8080/api/sala",                 
+        url: "http://localhost:8080/api/sala/" +naziv,                 
         dataType: "json",                                           
         contentType: "application/json",                           
         data: JSON.stringify(newSala),                          

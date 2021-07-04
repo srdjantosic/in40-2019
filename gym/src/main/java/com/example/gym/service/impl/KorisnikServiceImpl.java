@@ -40,17 +40,20 @@ public class KorisnikServiceImpl implements KorisnikService{
 					korisnikDTO.setKorisnicko_ime(korisnik.getkorisnicko_ime());
 					korisnikDTO.setLozinka(korisnik.getLozinka());
 					korisnikDTO.setRole("ADMIN");
+					korisnikDTO.setObrisan(korisnik.isObrisan());
 				}
 			}else {
 				korisnikDTO.setKorisnicko_ime(korisnik.getkorisnicko_ime());
 				korisnikDTO.setLozinka(korisnik.getLozinka());
 				korisnikDTO.setRole("TRENER");
+				korisnikDTO.setObrisan(korisnik.isObrisan());
 			}
 			
 		}else {
 			korisnikDTO.setKorisnicko_ime(korisnik.getkorisnicko_ime());
 			korisnikDTO.setLozinka(korisnik.getLozinka());
 			korisnikDTO.setRole("CLAN");
+			korisnikDTO.setObrisan(korisnik.isObrisan());
 		}
 		return korisnikDTO;
 	}

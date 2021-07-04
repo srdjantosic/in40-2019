@@ -32,6 +32,7 @@ public class Sala {
 		this.id = id;
 		this.kapacitet = kapacitet;
 		this.oznaka = oznaka;
+	
 	}
 
 	public int getKapacitet() {
@@ -65,6 +66,7 @@ public class Sala {
 	public void setFitnesscentar(FitnessCentar fitnesscentar) {
 		this.fitnesscentar = fitnesscentar;
 	}
+	
 
 	
 }

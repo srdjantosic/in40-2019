@@ -5,6 +5,7 @@ public class KorisnikDTO {
 	private String korisnicko_ime;
 	private String lozinka;
 	private String role;
+	private boolean obrisan;
 	
 	
 	public KorisnikDTO() {
@@ -42,11 +43,22 @@ public class KorisnikDTO {
 	}
 
 
-	public KorisnikDTO(String korisnicko_ime, String lozinka,String role) {
+	public KorisnikDTO(String korisnicko_ime, String lozinka,String role, boolean obrisan) {
 		super();
 		this.korisnicko_ime = korisnicko_ime;
 		this.lozinka = lozinka;
 		this.role = role;
+		this.obrisan=obrisan;
+	}
+
+
+	public boolean isObrisan() {
+		return obrisan;
+	}
+
+
+	public void setObrisan(boolean obrisan) {
+		this.obrisan = obrisan;
 	}
 	
 	

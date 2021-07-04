@@ -35,6 +35,8 @@ public class LoginController {
 		 KorisnikDTO korisnik = korisnikservice.findKimePass(korisnicko_ime, lozinka);
 		 if(korisnik == null) {
 			 return new ResponseEntity<>( HttpStatus.NOT_FOUND);
+		 }else if(korisnik.isObrisan()) {
+			 return new ResponseEntity<>( HttpStatus.FORBIDDEN);
 		 }
 	    
 	     return new ResponseEntity<>(korisnik, HttpStatus.OK);

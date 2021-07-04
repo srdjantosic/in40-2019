@@ -24,6 +24,7 @@ private String korisnicko_ime;
 	
 	
 	private String datum_rodjenja;
+	private boolean obrisan;
 
 	public ClanDTO() {
 		
@@ -96,7 +97,7 @@ private String korisnicko_ime;
 
 
 	public ClanDTO(String korisnicko_ime, String lozinka, String datum_rodjenja, String ime, String prezime, String kontakt,
-			String email, boolean aktivan) {
+			String email, boolean aktivan, boolean obrisan) {
 		super();
 		this.korisnicko_ime = korisnicko_ime;
 		this.lozinka = lozinka;
@@ -106,6 +107,15 @@ private String korisnicko_ime;
 		this.kontakt = kontakt;
 		this.email = email;
 		this.datum_rodjenja = datum_rodjenja;
+		this.obrisan=obrisan;
+	}
+
+	public boolean isObrisan() {
+		return obrisan;
+	}
+
+	public void setObrisan(boolean obrisan) {
+		this.obrisan = obrisan;
 	}
 
 }

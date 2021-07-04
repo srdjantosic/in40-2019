@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
-import javax.transaction.Transactional;
+
 
 
 @Service
@@ -43,7 +43,6 @@ public class TrenerServiceImpl implements TrenerService {
 	@Override
 	public Trener update(String korisnicko) throws Exception {
 		Trener trenerToUpdate = this.trenerrepository.getOne(korisnicko);
-		System.out.println(trenerToUpdate.getkorisnicko_ime());
 		
         if (trenerToUpdate == null) {
             throw new Exception("Trener doesn't exist!");
@@ -60,9 +59,10 @@ public class TrenerServiceImpl implements TrenerService {
 	}
 
 	@Override
-	@Transactional
 	public void delete(String korisnicko_ime) {
-		this.trenerrepository.deleteTrener(korisnicko_ime);
+		Trener trenerToUpdate = this.trenerrepository.getOne(korisnicko_ime);
+		trenerToUpdate.setObrisan(true);
+		this.trenerrepository.save(trenerToUpdate);
 		
 	}
 

@@ -3,6 +3,7 @@ package com.example.gym.service;
 import com.example.gym.entity.Ocena;
 
 import java.util.List;
+
 public interface OcenaService {
 	Ocena findOne(Long id);
 

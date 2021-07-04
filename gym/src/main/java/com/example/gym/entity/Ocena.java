@@ -45,6 +45,15 @@ public class Ocena {
 	public void setClan(Clan clan) {
 		this.clan = clan;
 	}
+
+
+
+
+	public Ocena(Long id, int vrednost) {
+		super();
+		this.id = id;
+		this.vrednost = vrednost;
+	}
 	
 	
 

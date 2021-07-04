@@ -13,10 +13,13 @@ $(document).on("submit", "#Prijava", function (event) {
             if(response.role=="ADMIN"){
                 window.location.href = "Admin.html";
             }
-            else {
-            window.location.href = "HomePage.html";              
+            else if(response.role=="TRENER"){
+            window.location.href = "Trener.html";              
             } 
-
+            else if(response.role=="CLAN") {
+            window.location.href="HomePage.html";
+            }
+        
            
                     
 
