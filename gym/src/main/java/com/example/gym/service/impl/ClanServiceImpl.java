@@ -64,5 +64,18 @@ public class ClanServiceImpl implements ClanService {
 		
 	}
 
+	@Override
+	public Clan nadjiPrijavljeneClanoveTrening(String korisnicko_ime) {
+		return this.clanrepository.nadjiPrijavljene(korisnicko_ime);
+		
+	}
+
+	@Override
+	public Clan nadjiOdradjeneClanoveTrening(String korisnicko_ime) {
+		return this.clanrepository.nadjiOdradjene(korisnicko_ime);
+	}
+	
+	
+
 
 }

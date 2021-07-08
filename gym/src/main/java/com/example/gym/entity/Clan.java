@@ -9,10 +9,10 @@ import javax.persistence.*;
 public class Clan extends Korisnik {
 	
 	
-	@ManyToMany(mappedBy = "clan", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany( fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	public Set<Trening> odradjeni;
 	
-	@ManyToMany(mappedBy = "clan", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany( fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	public Set<Trening> prijavljeni;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -33,6 +33,39 @@ public class Clan extends Korisnik {
 		super(korisnicko_ime, lozinka, ime, prezime, kontakt, email, datum_rodjenja, aktivan, obrisan);
 		
 	}
+
+	public Set<Trening> getOdradjeni() {
+		return odradjeni;
+	}
+
+	public void setOdradjeni(Set<Trening> odradjeni) {
+		this.odradjeni = odradjeni;
+	}
+
+	public Set<Trening> getPrijavljeni() {
+		return prijavljeni;
+	}
+
+	public void setPrijavljeni(Set<Trening> prijavljeni) {
+		this.prijavljeni = prijavljeni;
+	}
+
+	public FitnessCentar getFitnesscentar() {
+		return fitnesscentar;
+	}
+
+	public void setFitnesscentar(FitnessCentar fitnesscentar) {
+		this.fitnesscentar = fitnesscentar;
+	}
+
+	public Set<Termin> getTermin() {
+		return termin;
+	}
+
+	public void setTermin(Set<Termin> termin) {
+		this.termin = termin;
+	}
+	
 	
 
 	

@@ -1,6 +1,7 @@
 package com.example.gym.repository;
 import com.example.gym.entity.Termin;
 
+
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,6 +13,9 @@ public interface TerminRepository extends JpaRepository<Termin, Long> {
 	
 	@Query("Select t from Termin t join fetch t.fitnesscentar  where t.id =?1")
 	Termin findTerminFitnessCentar(Long id);
+	
+	@Query("Select t from Termin t join fetch t.trening join fetch t.sala where t.trening.id =?1")
+	Termin nadjiTerminSaTreningom(Long id);
 
 	
 }

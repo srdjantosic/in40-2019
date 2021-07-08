@@ -7,6 +7,45 @@ public class TerminDTO {
 
 	private Long id;
 	private Date datum;
+	private FitnessCentarDTO fitnesscentar;
+	private SalaDTO sala;
+	private TreningDTO trening;
+	
+	
+	
+	
+	public TreningDTO getTrening() {
+		return trening;
+	}
+
+
+	public void setTrening(TreningDTO trening) {
+		this.trening = trening;
+	}
+
+
+	public SalaDTO getSala() {
+		return sala;
+	}
+
+
+	public void setSala(SalaDTO sala) {
+		this.sala = sala;
+	}
+
+
+	public void setFitnessCentar(FitnessCentarDTO fitnesscentar) {
+		this.fitnesscentar = fitnesscentar;
+	}
+
+	
+	public FitnessCentarDTO getFitnesscentar() {
+		return fitnesscentar;
+	}
+
+
+
+
 	public TerminDTO() {
 		
 	}

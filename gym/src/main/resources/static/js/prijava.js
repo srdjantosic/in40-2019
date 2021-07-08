@@ -9,7 +9,7 @@ $(document).on("submit", "#Prijava", function (event) {
         dataType: "json",
         success: function (response) {                          
             console.log("SUCCESS:\n", response);               
-            localStorage.setItem('korisnik', response);
+            localStorage.setItem('korisnik', response.korisnicko_ime);
             if(response.role=="ADMIN"){
                 window.location.href = "Admin.html";
             }

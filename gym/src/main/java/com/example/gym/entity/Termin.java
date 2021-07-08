@@ -27,8 +27,9 @@ public class Termin {
 	    @ManyToOne(fetch = FetchType.EAGER)   
 	    private Trening trening;
 
-	    @ManyToOne(fetch = FetchType.EAGER)
-	    private Clan clan;
+	    @ManyToMany(fetch = FetchType.EAGER)
+	    private Set<Clan> clan;
+	    
 	    @ManyToOne(fetch = FetchType.EAGER)
 	    private Trener trener;
 
@@ -90,12 +91,14 @@ public class Termin {
 		}
 
 
-		public Clan getClan() {
+		
+
+		public Set<Clan> getClan() {
 			return clan;
 		}
 
 
-		public void setClan(Clan clan) {
+		public void setClan(Set<Clan> clan) {
 			this.clan = clan;
 		}
 

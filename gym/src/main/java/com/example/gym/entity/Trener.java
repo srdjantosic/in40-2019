@@ -9,6 +9,7 @@ public class Trener extends Korisnik {
 	
 	@OneToMany(mappedBy = "trener", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	public Set<Trening> treninzi;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	public FitnessCentar fitnesscentar;
 	
@@ -145,6 +146,26 @@ public class Trener extends Korisnik {
 	public void setAktivan(boolean aktivan) {
 		// TODO Auto-generated method stub
 		super.setAktivan(aktivan);
+	}
+
+
+	public Set<Trening> getTreninzi() {
+		return treninzi;
+	}
+
+
+	public void setTreninzi(Set<Trening> treninzi) {
+		this.treninzi = treninzi;
+	}
+
+
+	public FitnessCentar getFitnesscentar() {
+		return fitnesscentar;
+	}
+
+
+	public void setFitnesscentar(FitnessCentar fitnesscentar) {
+		this.fitnesscentar = fitnesscentar;
 	}
 	
 

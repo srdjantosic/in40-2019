@@ -16,4 +16,8 @@ public interface TerminService {
     List<Termin> findSorted(Long id);
     
     Termin findFitnessCentarTermin(Long id);
+    
+    Termin findSalaTermin(Long id);
+    
+    
 }

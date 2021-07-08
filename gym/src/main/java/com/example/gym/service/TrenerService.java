@@ -13,7 +13,7 @@ public interface TrenerService {
 	    Trener create(Trener trener) throws Exception;
 
 	    Trener update(String korisnicko) throws Exception;
-
+	    Trener nadj(String naziv);
 	    void delete(String korisnicko_ime);
 	    
 	    List<Trener> findTrenerNeAktivan();

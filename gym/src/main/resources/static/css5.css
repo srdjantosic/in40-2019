@@ -8,7 +8,7 @@ body{
  .box{
 
     margin: 50px auto;
-    width: 700px;
+    width: 800px;
     height: 500px;
     font-size: 20px;
     top: 50px;
@@ -29,3 +29,6 @@ body{
       flex: 50%;
       
     }
+
+
+    

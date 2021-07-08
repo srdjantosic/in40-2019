@@ -13,6 +13,8 @@ public interface FitnessCentarService {
 
     FitnessCentar nadji(String naziv);
     
+    
+    
     void delete(Long id);
 	
 	

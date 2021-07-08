@@ -18,21 +18,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.gym.entity.FitnessCentar;
 import com.example.gym.entity.Sala;
+import com.example.gym.entity.Trener;
 import com.example.gym.entity.dto.FitnessCentarDTO;
 import com.example.gym.entity.dto.SalaDTO;
 import com.example.gym.service.FitnessCentarService;
 import com.example.gym.service.SalaService;
+import com.example.gym.service.TrenerService;
 
 @RestController
 @RequestMapping(value = "/api/sala")
 public class SalaController {
 	private final SalaService salaservice;
 	private final FitnessCentarService fitnesscentarservice;
+	private final TrenerService trenerservice;
 
     @Autowired
-    public SalaController(SalaService salaservice,FitnessCentarService fitnesscentarservice) {
+    public SalaController(SalaService salaservice,FitnessCentarService fitnesscentarservice,TrenerService trenerservice) {
         this.salaservice = salaservice;
         this.fitnesscentarservice=fitnesscentarservice;
+        this.trenerservice=trenerservice;
     }
 
     
@@ -111,6 +115,29 @@ public class SalaController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<SalaDTO>> getSalaKorisnik(String id) {
+       
+    	System.out.println("DAAAAAAAA"+id);
+    	Trener t = trenerservice.nadj(id);
+    	System.out.println(t.getFitnesscentar().getNaziv());
+        List<Sala> salaList = this.salaservice.findAll();
+
+        List<SalaDTO> salaDTOS = new ArrayList<>();
+
+        for (Sala sala : salaList) {
+        	FitnessCentarDTO fitness = new FitnessCentarDTO();
+        	fitness.setId(sala.getFitnesscentar().getId());
+        	fitness.setNaziv(sala.getFitnesscentar().getNaziv());  
+        	
+            SalaDTO salaDTO = new SalaDTO(sala.getId(), sala.getKapacitet(), sala.getOznaka());
+            salaDTO.setFitnessCentar(fitness);
+            salaDTOS.add(salaDTO);
+        }
+
+  
+        return new ResponseEntity<>(salaDTOS, HttpStatus.OK);
+    }
 
 
 	

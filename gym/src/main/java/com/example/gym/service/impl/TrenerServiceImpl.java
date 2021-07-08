@@ -1,6 +1,6 @@
 package com.example.gym.service.impl;
 import com.example.gym.entity.Trener;
-import com.example.gym.entity.dto.TrenerDTO;
+
 import com.example.gym.repository.TrenerRepository;
 import com.example.gym.service.TrenerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +70,12 @@ public class TrenerServiceImpl implements TrenerService {
 	public List<Trener> findTrenerNeAktivan() {
 		List<Trener> trener =this.trenerrepository.findFalse();
 		return trener;
+	}
+
+	@Override
+	public Trener nadj(String naziv) {
+		Trener t = this.trenerrepository.nadjiKorisnikaSaFitnessCentrom(naziv);
+		return t;
 	}
 
 	

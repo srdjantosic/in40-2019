@@ -32,8 +32,8 @@ public class Trening {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Trener trener;
 	
-	@ManyToOne(fetch=FetchType.LAZY, cascade= CascadeType.ALL)
-	private Clan clan;
+	@ManyToMany(fetch=FetchType.LAZY, cascade= CascadeType.MERGE)
+	private Set<Clan> clan;
 	
 	@OneToMany(mappedBy = "trening", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Termin> termini;
@@ -78,8 +78,30 @@ public class Trening {
 		this.trajanje = trajanje;
 	}
 	
-	public Clan getClan() {
+	
+
+	public Trener getTrener() {
+		return trener;
+	}
+
+	public void setTrener(Trener trener) {
+		this.trener = trener;
+	}
+
+	public Set<Clan> getClan() {
 		return clan;
+	}
+
+	public void setClanovi(Set<Clan> clan) {
+		this.clan = clan;
+	}
+
+	public Set<Termin> getTermini() {
+		return termini;
+	}
+
+	public void setTermini(Set<Termin> termini) {
+		this.termini = termini;
 	}
 
 	public double getCena() {

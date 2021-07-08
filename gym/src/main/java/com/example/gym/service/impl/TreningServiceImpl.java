@@ -126,6 +126,18 @@ public class TreningServiceImpl implements TreningService {
 		}
         return trening;
 	}
+
+	@Override
+	public Trening nadji(String naziv) {
+		return this.treningRepository.nadjiNazi(naziv);
+		
+	}
+
+	@Override
+	public Trening nadjiTrening(Long id) {
+		return this.treningRepository.findTreningClan( id);
+	}
+
 	
 	
 	

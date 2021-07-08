@@ -15,6 +15,8 @@ $(document).ready(function () {
                 row += "<td>" + trening.cena + "</td>";
                 row += "<td>" + trening.termin.datum + "</td>";
                 row += "<td>" + trening.fitness.naziv + "</td>";
+                btn = "<button class='btnPrijavi' data-id=" + trening.id + ">Prijavi trening</button>";
+                row += "<td>" + btn + "</td>";
             
 
                 $('#treninzi').append(row);                        
@@ -43,8 +45,7 @@ $(document).ready(function () {
                 row += "<td>" + trening.tip_treninga + "</td>";
                 row += "<td>" + trening.trajanje + "</td>";
                 row += "<td>" + trening.cena + "</td>";
-               
-            
+                
 
                 $('#treninzi').append(row);                       
             }
@@ -69,6 +70,7 @@ $(document).ready(function () {
                 row += "<td>" + trening.tip_treninga + "</td>";
                 row += "<td>" + trening.trajanje + "</td>";
                 row += "<td>" + trening.cena + "</td>";
+              
                
                 $('#treninzi').append(row);                       
             }
@@ -106,3 +108,30 @@ $(document).on("submit","#Pretraga",function (event) {
         }
     });
 });
+
+$(document).on('click', '.btnPrijavi', function () {
+    let treningId = this.dataset.id;
+    let clanId = localStorage.getItem('korisnik');
+    console.log(clanId);
+    
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/api/termin/prijavitrening/" + treningId +"/" + clanId,
+        dataType: "json",
+        success: function (response) {
+            console.log("SUCCESS");
+            alert("Uspeh prilikom prijavljivanja!");
+        },
+        error: function (response) {
+            if(response.status == "200"){
+                alert("Uspeh prilikom prijavljivanja treninga!");
+                $('[data-id="' + treningId + '"]').parent().parent().remove();
+            }else{
+                alert("Greska prilikom prijavljivanja treninga!");
+            }
+            
+        }
+    });
+});
+   

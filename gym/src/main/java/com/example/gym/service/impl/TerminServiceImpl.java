@@ -71,6 +71,15 @@ public class TerminServiceImpl implements TerminService{
 		}
 		return termin;
 	}
+	@Override
+	public Termin findSalaTermin(Long id) {
+		Termin termin = this.terminrepository.nadjiTerminSaTreningom(id);
+		if( termin == null) {
+			return null;
+		}
+		return termin;
+	}
+	
 	
 
 }

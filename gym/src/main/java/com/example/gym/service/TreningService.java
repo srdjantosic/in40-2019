@@ -13,8 +13,13 @@ public interface TreningService {
 	    Trening create(Trening trening) throws Exception;
 
 	    Trening update(Trening trening) throws Exception;
+	    
+	    Trening nadji(String naziv);
 
 	    void delete(Long id);
+	    
+	    Trening nadjiTrening(Long id);
+	    
 	    
 	    List<Trening> sortTreningByCena();
 
