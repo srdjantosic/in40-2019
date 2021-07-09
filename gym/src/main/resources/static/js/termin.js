@@ -9,8 +9,8 @@ $(document).ready(function () {
             var sale = [];
             for (let sala of response) { 
                 console.log(sala);  
-                let s = {};                     
-                /*let row = "<tr>";                                   
+                           
+                let row = "<tr>";                                   
                 row += "<td>" + termin.datum + "</td>";     
                 row += "<td>" + termin.trening.naziv + "</td>";
                 row += "<td>" + termin.trening.cena + "</td>";
@@ -23,7 +23,7 @@ $(document).ready(function () {
                 
                 row += "</tr>";                                    
 
-                $('#termini').append(row); */                     
+                $('#termini').append(row);                    
             }
         },
         error: function (response) {                               

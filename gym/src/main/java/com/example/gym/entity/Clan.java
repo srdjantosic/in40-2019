@@ -21,6 +21,8 @@ public class Clan extends Korisnik {
 	@OneToMany(mappedBy = "clan", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Termin> termin;
 	
+	@OneToMany( fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	public Set<Trening> otkazani;
 
 	
 	
@@ -64,6 +66,14 @@ public class Clan extends Korisnik {
 
 	public void setTermin(Set<Termin> termin) {
 		this.termin = termin;
+	}
+
+	public Set<Trening> getOtkazani() {
+		return otkazani;
+	}
+
+	public void setOtkazani(Set<Trening> otkazani) {
+		this.otkazani = otkazani;
 	}
 	
 	

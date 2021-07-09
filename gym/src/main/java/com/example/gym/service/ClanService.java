@@ -18,4 +18,6 @@ public interface ClanService {
 	    Clan nadjiOdradjeneClanoveTrening(String korisnicko_ime);
 	    
 	    void delete(String  korisnicko_ime);
+	    
+	   void  otkaziTrening(String korisnicko_ime, Long id);
 }

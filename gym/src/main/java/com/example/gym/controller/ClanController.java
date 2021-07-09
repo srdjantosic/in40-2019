@@ -134,5 +134,6 @@ import com.example.gym.service.TerminService;
 		     
 		        return new ResponseEntity<>(clanDTO, HttpStatus.OK);
 		    }
+		 
 }
 

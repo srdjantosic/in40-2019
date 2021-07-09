@@ -115,3 +115,29 @@ $.ajax({
     }
 });
 });
+
+$(document).on('click', '.btnOtkazi', function () {
+    let treningId = this.dataset.id;
+    let clanId = localStorage.getItem('korisnik');
+    console.log(clanId);
+    
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/api/termin/otkaziTrening/" + treningId +"/" + clanId,
+        dataType: "json",
+        success: function (response) {
+            console.log("SUCCESS");
+            alert("Uspesno otkazano!");
+        },
+        error: function (response) {
+            if(response.status == "200"){
+                alert("Trening je otkazan!");
+                $('[data-id="' + treningId + '"]').parent().parent().remove();
+            }else{
+                alert("Greska !");
+            }
+            
+        }
+    });
+});

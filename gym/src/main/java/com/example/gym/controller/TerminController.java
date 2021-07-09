@@ -183,4 +183,28 @@ public ResponseEntity<HttpStatus> odradiTrening(@PathVariable Long id, @PathVari
     return new ResponseEntity<>(HttpStatus.OK);
 }
 
+@GetMapping(value = "/otkaziTrening/{id}/{korisnickoIme}",produces = MediaType.APPLICATION_JSON_VALUE)
+public ResponseEntity<HttpStatus> otkaziTrening(@PathVariable Long id, @PathVariable String korisnickoIme) {
+  
+	Trening trening = treningservice.nadjiTrening(id);
+	Termin t = terminservice.findSalaTermin(id);
+	
+	if(t == null) {
+		 return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+	}
+	
+	Clan c =this.clanservice.findOne(korisnickoIme);
+	
+	this.clanservice.otkaziTrening(korisnickoIme, id);
+	
+	c.getOtkazani().add(trening);
+	try {
+		this.clanservice.update(c);
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+
+    return new ResponseEntity<>(HttpStatus.OK);
+}
 }
