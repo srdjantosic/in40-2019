@@ -32,7 +32,7 @@ $(document).on("submit", "#dodajte", function (event) {
         success: function (response) {                              
             console.log(response);                                 
 
-            alert("Uspesno ste se registrovali!");
+            alert("Uspesno ste registrovali trenera!");
             window.location.href = "Admin.html";                
         },
         error: function () {                                        

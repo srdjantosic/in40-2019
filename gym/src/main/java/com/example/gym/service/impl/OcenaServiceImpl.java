@@ -44,7 +44,7 @@ public class OcenaServiceImpl implements OcenaService{
 	public Ocena update(Ocena ocena) throws Exception {
 		Ocena ocenaToUpdate = this.ocenarepository.getOne(ocena.getId());
         if (ocenaToUpdate == null) {
-            throw new Exception("Sala doesn't exist!");
+            throw new Exception("Ocena ne postoji!");
         }
         ocenaToUpdate.setVrednost(ocena.getVrednost());
   

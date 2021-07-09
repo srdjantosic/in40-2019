@@ -38,6 +38,9 @@ public class Trening {
 	@OneToMany(mappedBy = "trening", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Termin> termini;
 	
+	@ManyToMany( fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<Ocena> ocene;
+	
 	
 	public Trening() {
 		
@@ -110,6 +113,14 @@ public class Trening {
 
 	public void setCena(double cena) {
 		this.cena = cena;
+	}
+
+	public Set<Ocena> getOcene() {
+		return ocene;
+	}
+
+	public void setOcene(Set<Ocena> ocene) {
+		this.ocene = ocene;
 	}
 	
 

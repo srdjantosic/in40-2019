@@ -16,6 +16,7 @@ $(document).ready(function () {
                 row += "<td>" + trening.cena + "</td>";
                 row += "<td>" + trening.termin.datum + "</td>";
                 row += "<td>" + trening.fitness.naziv + "</td>";
+                row += "<td><select id="+trening.id+"><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select><button class='btnOceni' data-id="+ trening.id +">Oceni</button></td>";
                 btn = "<button class='btnOdradi' data-id=" + trening.id + ">Odradi trening</button>";
                 row += "<td>" + btn + "</td>";
                 btn = "<button class='btnOtkazi' data-id=" + trening.id + ">Otkazi trening</button>";
@@ -43,7 +44,7 @@ $(document).on('click', '.btnOdradi', function () {
         dataType: "json",
         success: function (response) {
             console.log("SUCCESS");
-            alert("Uspeh prilikom prijavljivanja!");
+           
         },
         error: function (response) {
             if(response.status == "200"){
@@ -75,7 +76,7 @@ $(document).ready(function () {
                 row += "<td>" + trening.cena + "</td>";
                 row += "<td>" + trening.termin.datum + "</td>";
                 row += "<td>" + trening.fitness.naziv + "</td>";
-                
+                row += "<td><select id="+trening.id+"><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select><button class='btnOceni' data-id="+ trening.id +">Oceni</button></td>";
             
 
                 $('#odradjeni').append(row);                        
@@ -86,7 +87,30 @@ $(document).ready(function () {
         }
     });
 });
-
+$(document).on('click', '.btnOceni', function () {
+    let treningId = this.dataset.id;
+    let v= "#"+treningId;
+    let ocena = $(v).val();
+    let clanId=localStorage.getItem('korisnik');
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/api/ocena/oceniTrening/" + treningId +"/" + clanId+"/"+ocena,
+        dataType: "json",
+        success: function (response) {
+            console.log("SUCCESS");
+            alert("Uspesno ocenjeno!");
+        },
+        error: function (response) {
+            if(response.status == "200"){
+                alert("Uspesno ocenjeno!");
+            }else{
+                alert("Greska, vec ste ocenili trening !");
+            }
+            
+        }
+    });
+    
+});
 $(document).ready(function () {    
   let clanId=localStorage.getItem('korisnik');
   
